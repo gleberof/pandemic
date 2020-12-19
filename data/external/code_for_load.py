@@ -15,4 +15,9 @@ data = data.merge(region_code_features, on="region", how="left")
 
 
 
+# Агрегаты по образованию
+agg_education_mult = pd.read_csv("agg_education_mult.csv")
+data = data.merge(agg_education_mult, on="id", how="left")
+data.loc[:, ["ins_all", "ins_diff", "year_min", "year_max"]] = \
+    data.loc[:, ["ins_all", "ins_diff", "year_min", "year_max"]].fillna(-1)
 
