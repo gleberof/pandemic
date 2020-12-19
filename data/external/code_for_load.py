@@ -13,6 +13,16 @@ le.transform(locality)
 region_code_features = pd.read_csv("region_code_features.csv") 
 data = data.merge(region_code_features, on="region", how="left")
 
+for col in ['rfs', 'rts', 'rr_k', 'rr_cl',
+            'tfs', 'tts', 'tr_k', 'tr_cl',
+            'gfs', 'gts', 'gr_k', 'gr_cl',
+            'rrfs', 'rrts', 'rrr_k', 'rrr_cl']:
+    if col.endswith("_cl"):
+        data.loc[:, col] = data.loc[:, col].fillna(-1)
+    else:
+        median = data.loc[:, col].median()
+        data.loc[:, col] = data.loc[:, col].fillna(median)
+
 
 
 # Агрегаты по образованию
