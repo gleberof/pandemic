@@ -31,3 +31,11 @@ data = data.merge(agg_education_mult, on="id", how="left")
 data.loc[:, ["ins_all", "ins_diff", "year_min", "year_max"]] = \
     data.loc[:, ["ins_all", "ins_diff", "year_min", "year_max"]].fillna(-1)
 
+
+
+# Агрегаты по работе
+work_gr = pd.read_csv("work_gr.csv")
+data = data.merge(work_gr, on="id", how="left")
+
+work_cols = ["pos_count", "pos_uniq", "emp_uniq", "day_exp", "day_free"]
+data.loc[:, work_cols] = data.loc[:, work_cols].fillna(-1)
