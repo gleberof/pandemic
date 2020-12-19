@@ -47,6 +47,13 @@ def set_age(train, test):
     
     return train, test
 
+def set_age2(train, test):
+    min_date = pd.to_datetime(train['modification_date'], format="%Y-%m-%d").min()
+    train['mod_age_mnth'] = (pd.to_datetime(train['modification_date'], format="%Y-%m-%d") - min_date)//np.timedelta64(1, 'M')
+    test['mod_age_mnth'] = (pd.to_datetime(test['modification_date'], format="%Y-%m-%d") - min_date)//np.timedelta64(1, 'M')
+    
+    return train, test
+
 # position - слишком вариативна - можно кластеризировать\
 CAT_FEATURES = ['position', 
                 'region', 
