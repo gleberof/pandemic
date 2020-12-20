@@ -1,6 +1,7 @@
 .ipynb_checkpoints
 __pycache__
-catboost_info
+/catboost_info
+/notebooks/catboost_info/
 .vscode
 /data/raw/*.csv
 /data/preprocessed/
