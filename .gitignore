@@ -4,5 +4,5 @@ __pycache__
 /notebooks/catboost_info/
 .vscode
 /data/raw/*.csv
-/data/preprocessed/
+/data/preprocessed/*.pq
 
